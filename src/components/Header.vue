@@ -3,7 +3,7 @@
   <header>
     <div class="header-container">
       <div class="logo-container">
-        <a @click="goToMain" href="#">Mini Weather App</a>
+        <a @click="goToMain" href="#">Weather App</a>
       </div>
       <nav>
         <div class="nav-content">
