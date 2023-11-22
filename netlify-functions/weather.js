@@ -9,9 +9,10 @@ exports.handler = async function(event, context) {
 
     const requestBody = JSON.parse(event.body);
     const city = requestBody.city;
+    const url = `${BASE_URL}?q=${city}&appid=${API_KEY}`;
 
     try {
-        const response = await axios.get(`${BASE_URL}?q=${city}&appid=${API_KEY}`);
+        const response = await axios.get(url);
         return {
             statusCode: 200,
             body: JSON.stringify(response.data),
@@ -19,7 +20,7 @@ exports.handler = async function(event, context) {
     } catch (error) {
         return {
             statusCode: 500,
-            body: JSON.stringify({ error: 'Internal Server Error' }),
+            body: JSON.stringify({ msg: '500 '+url, error:error }),
         };
     }
 };
