@@ -9,7 +9,7 @@
             class="search-bar"
             placeholder="Search..."
             v-model="city"
-            @keyup="fetchData"
+            @keyup="onInput"
         >
 
         <div v-if="weather?.main" class="weather-container">
@@ -42,10 +42,20 @@ export default defineComponent({
 
     const city = ref('');
     const store = useWeatherStore();
-    const weather = computed(()=> store.weatherData);
+    const weather = computed(()=>store.weatherData);
 
+    let timeout;
+
+    function onInput() {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+      timeout = setTimeout(() => {
+        fetchData();
+      }, 900);
+    }
     function fetchData(){
-      setTimeout(store.getWeatherData(city.value),2500)
+      store.getWeatherData(city.value)
     }
 
     function dateBuilder () {
@@ -64,7 +74,8 @@ export default defineComponent({
       city,
       weather,
       fetchData,
-      dateBuilder
+      dateBuilder,
+      onInput
     }
   }
 })

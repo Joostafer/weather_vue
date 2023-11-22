@@ -44,6 +44,10 @@ export default defineComponent({
 .logo-container a {
   font-weight: 600;
 }
+a {
+  text-decoration: none;
+  color: #3b82f6;
+}
 
 .header-container {
   padding: 20px 28px;
