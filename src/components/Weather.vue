@@ -2,15 +2,15 @@
 
   <div class="weather" :class="typeof weather?.main !='undefined' && (weather?.main.temp - 273.15) > 16 ? 'warm':''">
     <div class="main">
+      <input
+          type="text"
+          id="city"
+          class="search-bar"
+          placeholder="Search..."
+          v-model="city"
+          @keyup="onInput"
+      >
       <div class="search-box">
-        <input
-            type="text"
-            id="city"
-            class="search-bar"
-            placeholder="Search..."
-            v-model="city"
-            @keyup="onInput"
-        >
 
         <div v-if="weather?.main" class="weather-container">
           <div class="weather-wrap">
@@ -94,8 +94,13 @@ export default defineComponent({
     .search-box {
       width: 100%;
       margin-bottom: 30px;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
-    .search-box .search-bar {
+    .search-bar {
       display: block;
       width: 100%;
       padding: 15px;
@@ -109,7 +114,7 @@ export default defineComponent({
       border-radius: 0 16px 0 16px;
       transition: 0.4s;
     }
-    .search-box .search-bar:focus {
+    .search-bar:focus {
       box-shadow: 0 0 16px rgba(0,0,0,0.25);
       background-color: rgba(255,255,255,0.75);
       border-radius: 16px 0 16px 0;
