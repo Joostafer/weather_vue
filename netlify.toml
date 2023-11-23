@@ -1,3 +1,8 @@
 [build]
   functions = "netlify-functions"
   command = "npm run build"
+
+[[redirects]]
+  from = "/about/*"
+  to = "/about/index.html"
+  status = 200

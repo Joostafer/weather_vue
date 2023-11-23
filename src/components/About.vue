@@ -1,10 +1,10 @@
 <template>
   <div class="about">
-    <pre>
-      Weather App - this app writed by Joostafer.
-      It used VueJS with axios, pinia.
-      Worked with weather api, and secure api key.
-    </pre>
+
+    <p>Weather App - this app writed by Joostafer.</p>
+    <p>It used VueJS with axios, pinia.</p>
+    <p>Worked with weather api, and secure api key.</p>
+
   </div>
 </template>
 
@@ -31,6 +31,7 @@ export default defineComponent({
   }
 
   .about p {
+    width: 100%;
     padding: 10px 25px ;
   }
 </style>
